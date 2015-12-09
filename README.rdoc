@@ -1,0 +1,35 @@
+Creating a database
+
+- bundle exec rake db:create
+
+Generating a migration file
+
+- bundle exec rake generate migration create_blog title body:text value_count:integer
+(Note: string is default)
+
+Run migration
+
+- bundle exec rake db:migrate
+
+Rollback migration
+
+- bundle exec rake db:rollback
+
+
+Generate a controller
+
+- bundle exec rails generate controller blogs(controller name) new create (action names needed spaced out)
+
+
+Generate a model
+(Generate both model and migration files)
+- bundle exec rails generate model Blog title body:text value_count:integer(similar to migration)
+
+
+Launch server
+
+- bundle exec rails s
+
+Launch console
+
+- bundle exec rails c

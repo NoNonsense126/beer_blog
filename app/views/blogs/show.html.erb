@@ -1,0 +1,14 @@
+<h3><%= @blog.title %></h3>
+
+<p>
+  <%= @blog.body %>
+</p>
+
+<%= link_to "Edit Blog", edit_blog_path(@blog)  %>
+
+<%= link_to "Delete Blog", blog_path(@blog), method: :delete  %>
+<!-- 
+<form action="/blogs/:id" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form> -->
