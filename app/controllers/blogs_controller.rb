@@ -4,6 +4,7 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all
+    @blog = Blog.new
   end
 
   def new
@@ -12,10 +13,18 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    # respond_to do |format|
+    #   format.json{
+    #     if @blog.save
+    #       render json: @blog
+    #     else
+    #       render nothing: true
+    #     end
+    #   }
+    # end
     if @blog.save
-      redirect_to blog_path(@blog)
+      render :show_ajax, layout: false
     else
-      render :new
     end
   end
 

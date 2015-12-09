@@ -1,6 +1,10 @@
 <h1>All Blogs</h1>
 
-<ul>
+<%= render 'form' %>
+
+
+
+<ul id="blog-list">
   <% @blogs.each do |blog| %>
 <!--     <li>
       <a href='<%= "/blogs/#{blog.id}" %>'>
@@ -10,3 +14,28 @@
     <li><%= link_to blog.title, blog %></li>
   <% end %>
 </ul>
+
+
+<script>
+
+  $(document).ready(function(){
+    $("#new_blog").submit(function(e){
+      e.preventDefault();
+      var action = $(this).attr('action');
+      var method = $(this).attr('method');
+      var formData = $(this).serialize();
+
+      $.ajax({
+        type: method,
+        url: action,
+        data: formData
+        // dataType: "json"
+      }).done(function(response){
+        // $("#blog-list").append('<li><a href="/blogs/'+ response.id +'">' + response.title + '</a></li>')
+        $("#blog-list").append(response)
+      })
+    })
+
+  })
+
+</script>
